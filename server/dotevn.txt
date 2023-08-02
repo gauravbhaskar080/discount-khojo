@@ -1,0 +1,1 @@
+DB_URL : 'mongodb+srv://gaurav:bhaskar@cluster0.jkueovp.mongodb.net/?retryWrites=true&w=majority';
