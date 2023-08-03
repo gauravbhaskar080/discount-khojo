@@ -6,6 +6,7 @@ import Header from "./Components/Header/Header";
 import DetailView from './Components/ItemDetails/DetailView';
 import TemplateProvider from "./templates/TemplateProvider";
 import ContextProvider from "./context/ContextProvider";
+import Cart from './Components/Cart/Cart'
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path= '/product/:id' element={<DetailView />} />
+              <Route path= '/cart' element={<Cart />} />
             </Routes>
           </Box>
         </BrowserRouter>
