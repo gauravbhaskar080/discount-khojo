@@ -15,6 +15,7 @@ const Heading = styled(Typography)`
 const Container = styled(Box)`
     padding: 15px 24px;
     background: #fff;
+    border : 2px solid blue;
     & > p {
         margin-bottom: 20px;
         font-size: 14px;
@@ -49,7 +50,7 @@ const TotalView = ({ cartItems }) => {
 
     useEffect(() => {
         totalAmount();
-    }, {cartItems});
+    }, [cartItems]);
     
     const totalAmount = () => {
         let price = 0, discount = 0;

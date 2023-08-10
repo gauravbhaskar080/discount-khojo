@@ -1,7 +1,7 @@
 import { useState , useContext} from "react";
 
 import { Box, Typography, Button, styled, Badge } from "@mui/material";
-import {shoppingCart} from '@mui/icons-material';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import Profile from "./Profile";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
@@ -75,11 +75,11 @@ const CustomButtons = () => {
       <Typography style={{ marginTop: 3 }}>More</Typography>
 
       <Container to="/cart">
-      <Badge badgeContent={cartItems?.length} color="secondary">
-        <shoppingCart />
+        <Badge badgeContent={cartItems?.length} color="success" >
+        <ShoppingCartIcon />
         </Badge>
-        <Typography style={{ marginLeft: 10 }}>Cart</Typography>
       </Container>
+
       <LoginDialog open = {open} setOpen = {setOpen}/>
 
     </Wrapper>
