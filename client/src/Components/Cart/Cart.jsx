@@ -4,13 +4,13 @@ import { Box, Typography, Button, Grid, styled } from '@mui/material';
 import { useParams } from 'react-router-dom';
 
 import { useSelector, useDispatch } from 'react-redux';
-// import { addToCart, removeFromCart } from '../../redux/actions/cartActions';
+import { addToCart, removeFromCart } from '../../redux/actions/cartActions';
 
 import TotalView from './TotalView';
-// import EmptyCart from './EmptyCart';
+import EmptyCart from './EmptyCart';
 import CartItem from './CartItem';
 
-// import { post } from '../../utils/paytm';
+import { post } from '../../utils/paytm';
 import { payUsingPaytm } from '../../service/api';
 
 const Component = styled(Grid)(({ theme }) => ({
@@ -51,54 +51,55 @@ const StyledButton = styled(Button)`
 `;
 
 const Cart = () => {
-    const cartDetails = useSelector(state => state.cart);
-    const { cartItems } = cartDetails;
-    // const { id } = useParams();
+    const EMPTY_CART = { cartItems: [] }; // To ensure that default value is singleton and avoid useless re-renders
+
+    const { cartItems } = useSelector(state => state.cart || EMPTY_CART );
+    const { id } = useParams();
 
     const dispatch = useDispatch();
     
-    // useEffect(() => {
-    //     if(cartItems && id !== cartItems.id)   
-    //         dispatch(addToCart(id));
-    // }, [dispatch, cartItems, id]);
+    useEffect(() => {
+        if(cartItems && id !== cartItems.id)   
+            dispatch(addToCart(id));
+    }, [dispatch, cartItems, id]);
 
-    // const removeItemFromCart = (id) => {
-    //     dispatch(removeFromCart(id));
-    // }
+    const removeItemFromCart = (id) => {
+        dispatch(removeFromCart(id));
+    }
 
-    // const buyNow = async () => {
-    //     let response = await payUsingPaytm({ amount: 500, email: 'kunaltyagi@gmail.com'});
-    //     var information = {
-    //         action: 'https://securegw-stage.paytm.in/order/process',
-    //         params: response    
-    //     }
-    //     post(information);
-    // }
+    const buyNow = async () => {
+        let response = await payUsingPaytm({ amount: 500, email: 'kunaltyagi@gmail.com'});
+        var information = {
+            action: 'https://securegw-stage.paytm.in/order/process',
+            params: response    
+        }
+        post(information);
+    }
 
-    // return (
-        // <>
-        // { cartItems.length ? 
-        //     <Component container>
-        //         <LeftComponent item lg={9} md={9} sm={12} xs={12}>
-        //             <Header>
-        //                 <Typography style={{fontWeight: 600, fontSize: 18}}>My Cart ({cartItems?.length})</Typography>
-        //             </Header>
-        //                 {   cartItems.map(item => (
-        //                         <CartItem item={item} removeItemFromCart={removeItemFromCart}/>
-        //                     ))
-        //                 }
-        //             <BottomWrapper>
-        //                 <StyledButton onClick={() => buyNow()} variant="contained">Place Order</StyledButton>
-        //             </BottomWrapper>
-        //         </LeftComponent>
-        //         <Grid item lg={3} md={3} sm={12} xs={12}>
-        //             <TotalView cartItems={cartItems} />
-        //         </Grid>
-        //     </Component> : <EmptyCart />
-        // }
-        // </>
+    return (
+        <>
+        { cartItems.length ? 
+            <Component container>
+                <LeftComponent item lg={9} md={9} sm={12} xs={12}>
+                    <Header>
+                        <Typography style={{fontWeight: 600, fontSize: 18}}>My Cart ({cartItems?.length})</Typography>
+                    </Header>
+                        {   cartItems.map(item => (
+                                <CartItem item={item} removeItemFromCart={removeItemFromCart}/>
+                            ))
+                        }
+                    <BottomWrapper>
+                    <StyledButton onClick={() => buyNow()} variant="contained">Place Order</StyledButton>
+                    </BottomWrapper>
+                </LeftComponent>
+                <Grid item lg={3} md={3} sm={12} xs={12}>
+                    <TotalView cartItems={cartItems} />
+                </Grid>
+            </Component> : <EmptyCart />
+        }
+        </>
 
-    // )
+    )
 }
 
 export default Cart;

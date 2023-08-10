@@ -8,6 +8,8 @@ const Component = styled(Card)`
     border-top: 1px solid #f0f0f0;
     border-radius: 0px;
     display: flex;
+    background : #fff;
+    
 `;
 
 const LeftComponent = styled(Box)`

@@ -8,6 +8,7 @@ const Component = styled(Box)(({ theme }) => ({
   justifyContent: "space-between",
   margin: "55px 130px 0 130px !important",
   overflowX: "overlay",
+  background : '#fff',
   [theme.breakpoints.down("lg")]: {
     margin: "0px !important",
   },
@@ -26,14 +27,16 @@ const Text = styled(Typography)`
 
 const NavBar = () => {
   return (
+    <Box style={{background:'#fff'}}>
     <Component>
       {navData.map((temp) => (
         <Container>
-          <img src={temp.url} style={{ width: 64 }} />
+          <img src={temp.url} alt="img" style={{ width: 64 }} />
           <Text>{temp.text}</Text>
         </Container>
       ))}
     </Component>
+    </Box>
   );
 };
 

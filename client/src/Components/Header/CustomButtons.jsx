@@ -60,6 +60,10 @@ const CustomButtons = () => {
   const openDialog = () => {
     setOpen(true);
   }
+  const EMPTY_CART = { cartItems: [] }; // To ensure that default value is singleton and avoid useless re-renders
+
+  const cartDetails = useSelector(state => state.cart || EMPTY_CART);
+    const { cartItems } = cartDetails;
   return (
     <Wrapper>
       {
@@ -71,7 +75,7 @@ const CustomButtons = () => {
       <Typography style={{ marginTop: 3 }}>More</Typography>
 
       <Container to="/cart">
-        <Badge color="secondary">
+      <Badge badgeContent={cartItems?.length} color="secondary">
         <shoppingCart />
         </Badge>
         <Typography style={{ marginLeft: 10 }}>Cart</Typography>

@@ -41,7 +41,7 @@ const Discount = styled(Typography)`
 // component: {
 //     // width: '30%'
 // },
-
+ 
 
 const TotalView = ({ cartItems }) => {
     const [price, setPrice] = useState(0);
@@ -49,7 +49,7 @@ const TotalView = ({ cartItems }) => {
 
     useEffect(() => {
         totalAmount();
-    }, [cartItems]);
+    }, {cartItems});
     
     const totalAmount = () => {
         let price = 0, discount = 0;
