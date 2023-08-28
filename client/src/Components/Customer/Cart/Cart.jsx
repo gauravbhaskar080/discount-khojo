@@ -9,9 +9,13 @@ import { addToCart, removeFromCart } from '../../../redux/actions/cartActions';
 import TotalView from './TotalView';
 import EmptyCart from './EmptyCart';
 import CartItem from './CartItem';
+import PayButton from './PayButton';
 
+<<<<<<< HEAD
 import { post } from '../../../utils/paytm';
 import { payUsingPaytm } from '../../../service/api';
+=======
+>>>>>>> fd52053d1e0bbc7a20d5e0656a1772592943641c
 
 const Component = styled(Grid)(({ theme }) => ({
     padding: '30px 135px',
@@ -40,15 +44,6 @@ const BottomWrapper = styled(Box)`
     border-top: 1px solid #f0f0f0;
 `;
 
-const StyledButton = styled(Button)`
-    display: flex;
-    margin-left: auto;
-    background: #fb641b;
-    color: #fff;
-    border-radius: 2px;
-    width: 250px;
-    height: 51px;
-`;
 
 const Cart = () => {
     const EMPTY_CART = { cartItems: [] }; // To ensure that default value is singleton and avoid useless re-renders
@@ -67,14 +62,6 @@ const Cart = () => {
         dispatch(removeFromCart(id));
     }
 
-    const buyNow = async () => {
-        let response = await payUsingPaytm({ amount: 500, email: 'kunaltyagi@gmail.com'});
-        var information = {
-            action: 'https://securegw-stage.paytm.in/order/process',
-            params: response    
-        }
-        post(information);
-    }
 
     return (
         <>
@@ -89,7 +76,7 @@ const Cart = () => {
                             ))
                         }
                     <BottomWrapper>
-                    <StyledButton onClick={() => buyNow()} variant="contained">Place Order</StyledButton>
+                    <PayButton cartItems = {cartItems} />
                     </BottomWrapper>
                 </LeftComponent>
                 <Grid item lg={3} md={3} sm={12} xs={12}>
