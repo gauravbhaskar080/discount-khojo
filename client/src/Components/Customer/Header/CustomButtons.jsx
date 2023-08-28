@@ -3,11 +3,12 @@ import { useState , useContext} from "react";
 import { Box, Typography, Button, styled, Badge } from "@mui/material";
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import Profile from "./Profile";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 import LoginDialog from '../login/LoginDialog';
-import { LoginContext } from "../../context/ContextProvider";
+
+import { LoginContext } from "../../../context/ContextProvider";
 
 let Container = styled(Link)(({ theme }) => ({
   display: "flex",
@@ -64,6 +65,7 @@ const CustomButtons = () => {
 
   const cartDetails = useSelector(state => state.cart || EMPTY_CART);
     const { cartItems } = cartDetails;
+    const navigate = useNavigate();
   return (
     <Wrapper>
       {
@@ -72,7 +74,9 @@ const CustomButtons = () => {
       <Typography style={{ marginTop: 3, width: 135 }}>
         Become a Seller
       </Typography>
-      <Typography style={{ marginTop: 3 }}>More</Typography>
+      <Box onClick={()=> navigate('/addProduct')}>
+        <Typography style={{ marginTop: 3 , cursor: "pointer"} }>More</Typography>
+      </Box>
 
       <Container to="/cart">
         <Badge badgeContent={cartItems?.length} color="success" >

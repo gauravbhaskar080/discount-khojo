@@ -1,7 +1,7 @@
 
 import { Card, Box, Typography, Button, styled } from '@mui/material';
 
-import { addEllipsis } from '../../utils/util';
+import { addEllipsis } from '../../../utils/util';
 import GroupButton from './GroupButton'; 
 
 const Component = styled(Card)`

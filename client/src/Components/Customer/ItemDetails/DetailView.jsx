@@ -6,9 +6,9 @@ import ProductDetail from "./ProductDetail";
 import ActionItem from "./ActionItem";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { getProductById } from "../../service/api";
+import { getProductById } from "../../../service/api";
 
-import { getProductDetails } from "../../redux/actions/productActions";
+import { getProductDetails } from "../../../redux/actions/productActions";
 
 const Component = styled(Box)`
   margin-top: 55px;

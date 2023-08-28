@@ -4,7 +4,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import { InputBase, List, ListItem, Box, styled } from '@mui/material';
 
 import { useSelector, useDispatch } from 'react-redux'; // hooks
-import { getProducts as listProducts } from '../../redux/actions/productActions';
+import { getProducts as listProducts } from '../../../redux/actions/productActions';
 import { Link } from 'react-router-dom';
 
 const SearchContainer = styled(Box)`

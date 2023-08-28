@@ -2,8 +2,8 @@ import { useState, useEffect, useContext } from 'react';
 
 import { Dialog, DialogContent, TextField, Box, Button, Typography, styled } from '@mui/material';
 
-import { authenticateLogin, authenticateSignup } from '../../service/api';
-import { LoginContext } from '../../context/ContextProvider';
+import { authenticateLogin, authenticateSignup } from '../../../service/api';
+import { LoginContext } from '../../../context/ContextProvider';
 
 const Component = styled(DialogContent)`
     height: 70vh;

@@ -2,11 +2,12 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Home, NotFound } from "./Components/default";
 import { Box } from "@mui/material";
 
-import Header from "./Components/Header/Header";
-import DetailView from './Components/ItemDetails/DetailView';
+import Header from './Components/Customer/Header/Header';
+import DetailView from './Components/Customer/ItemDetails/DetailView';
 import TemplateProvider from "./templates/TemplateProvider";
 import ContextProvider from "./context/ContextProvider";
-import Cart from './Components/Cart/Cart'
+import Cart from './Components/Customer/Cart/Cart'
+import AddProduct from "./Components/Customer/AddProduct/AddProduct";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
               <Route path="/" element={<Home />} />
               <Route path= '/product/:id' element={<DetailView />} />
               <Route path= '/cart' element={<Cart />} />
+              <Route path= '/addProduct' element={<AddProduct />} />
             </Routes>
           </Box>
         </BrowserRouter>

@@ -1,7 +1,7 @@
 import React from "react";
 
 import { Typography, Box, styled } from "@mui/material";
-import { navData } from "../../constants/data";
+import { navData } from "../../../constants/data";
 
 const Component = styled(Box)(({ theme }) => ({
   display: "flex",
