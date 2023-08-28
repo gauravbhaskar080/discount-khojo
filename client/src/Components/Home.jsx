@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
 
-import Banner from "./Home/Banner";
-import NavBar from "./Home/NavBar";
-import Slide from "./Home/Slide";
-import MidSlide from "./Home/MidSlide";
-import MidSection from "./Home/MidSection";
+import Banner from "../Components/Customer/Home/Banner";
+import NavBar from "../Components/Customer/Home/NavBar";
+import Slide from "../Components/Customer/Home/Slide";
+import MidSlide from "../Components/Customer/Home/MidSlide";
+import MidSection from "../Components/Customer/Home/MidSection";
 
 import { Box, styled } from "@mui/material";
 
@@ -19,6 +19,7 @@ const Component = styled(Box)`
 const Home = () => {
   const getProducts = useSelector((state) => state.getProducts);
   const { products, error } = getProducts;
+  console.log("products", products);
 
   const dispatch = useDispatch();
 
