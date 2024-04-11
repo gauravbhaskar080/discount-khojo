@@ -7,12 +7,9 @@ import { useNavigate } from "react-router-dom";
 
 import { addToCart } from "../../../redux/actions/cartActions";
 import { useDispatch } from "react-redux";
-<<<<<<< HEAD
-import { addToCart } from "../../../redux/actions/cartActions";
 
-
-=======
->>>>>>> fd52053d1e0bbc7a20d5e0656a1772592943641c
+import axios from "axios";
+import { url } from "../../../service/api";
 
 const LeftContainer = styled(Box)(({ theme }) => ({
   minWidth: "40%",
@@ -47,6 +44,19 @@ const ActionItem = ({ product }) => {
     navigate("/cart");
   };
 
+  const handleCheckout = () => {
+    axios
+      .post(`${url}/stripe/create-checkout-session`, {
+        cartItems: [{ ...product, quantity: 1 }], // Modify to send product as cartItems
+      })
+      .then((response) => {
+        if (response.data.url) {
+          window.location.href = response.data.url;
+        }
+      })
+      .catch((err) => console.log(err.message));
+  };
+
   return (
     <LeftContainer>
       <Image src={product.detailUrl} />
@@ -62,9 +72,9 @@ const ActionItem = ({ product }) => {
       <StyledButton
         style={{ background: "#fb641b" }}
         variant="contained"
+        onClick={() => handleCheckout()}
       >
-        <Flash />{" "}
-          Buy Now
+        <Flash /> Buy Now
       </StyledButton>
     </LeftContainer>
   );

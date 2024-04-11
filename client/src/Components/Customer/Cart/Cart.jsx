@@ -11,11 +11,8 @@ import EmptyCart from './EmptyCart';
 import CartItem from './CartItem';
 import PayButton from './PayButton';
 
-<<<<<<< HEAD
-import { post } from '../../../utils/paytm';
-import { payUsingPaytm } from '../../../service/api';
-=======
->>>>>>> fd52053d1e0bbc7a20d5e0656a1772592943641c
+// import { post } from '../../../utils/paytm';
+// import { payUsingPaytm } from '../../../service/api';
 
 const Component = styled(Grid)(({ theme }) => ({
     padding: '30px 135px',

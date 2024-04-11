@@ -7,10 +7,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 import LoginDialog from '../login/LoginDialog';
-<<<<<<< HEAD
 
-=======
->>>>>>> fd52053d1e0bbc7a20d5e0656a1772592943641c
 import { LoginContext } from "../../../context/ContextProvider";
 
 let Container = styled(Link)(({ theme }) => ({
@@ -71,30 +68,28 @@ const CustomButtons = () => {
     const navigate = useNavigate();
   return (
     <Wrapper>
-      {
-        account ? <Profile account = {account} setAccount={setAccount}/> : <LoginButton variant="contained" onClick={()=> openDialog()}>Login</LoginButton>
-      }
+      {account ? (
+        <Profile account={account} setAccount={setAccount} />
+      ) : (
+        <LoginButton variant="contained" onClick={() => openDialog()}>
+          Login
+        </LoginButton>
+      )}
       <Typography style={{ marginTop: 3, width: 135 }}>
         Become a Seller
       </Typography>
-<<<<<<< HEAD
-      <Box onClick={()=> navigate('/addProduct')}>
-        <Typography style={{ marginTop: 3 , cursor: "pointer"} }>More</Typography>
-      </Box>
-
-=======
       <Container to="/product">
-      <Typography style={{ marginTop: 3 }}>More</Typography>
+        <Typography style={{ marginTop: 3, width: 120 }}>
+          More Products
+        </Typography>
       </Container>
->>>>>>> fd52053d1e0bbc7a20d5e0656a1772592943641c
       <Container to="/cart">
-        <Badge badgeContent={cartItems?.length} color="success" >
-        <ShoppingCartIcon />
+        <Badge badgeContent={cartItems?.length} color="success">
+          <ShoppingCartIcon />
         </Badge>
       </Container>
 
-      <LoginDialog open = {open} setOpen = {setOpen}/>
-
+      <LoginDialog open={open} setOpen={setOpen} />
     </Wrapper>
   );
 };
